@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>matsch Hub</title>
+    <link>localhost/</link>
+    <description>Recent content on matsch Hub</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 18 Jun 2020 22:14:05 +0200</lastBuildDate>
+    
+	<atom:link href="localhost/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Projects</title>
+      <link>localhost/projects/</link>
+      <pubDate>Thu, 18 Jun 2020 23:31:31 +0200</pubDate>
+      
+      <guid>localhost/projects/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>localhost/about/</link>
+      <pubDate>Thu, 18 Jun 2020 22:46:25 +0200</pubDate>
+      
+      <guid>localhost/about/</guid>
+      <description>Hey there. My name is Matthias. I&amp;rsquo;m a graduate in Media Design (B.A.) and passionate about using web technologies to create art and tools to improve everyday life. I also like to tinker with different programming languages from time to time. Some days, I go out into the woods where I enjoy a relaxed solo walk.</description>
+    </item>
+    
+    <item>
+      <title>Welcome</title>
+      <link>localhost/posts/welcome/</link>
+      <pubDate>Thu, 18 Jun 2020 22:14:05 +0200</pubDate>
+      
+      <guid>localhost/posts/welcome/</guid>
+      <description>Welcome. I&amp;rsquo;m glad you found this place. On this blog, I want to share my thoughts on technology, music and a few other topics. I try to post in a regular manner. Come back any time to see the updates.</description>
+    </item>
+    
+  </channel>
+</rss>
