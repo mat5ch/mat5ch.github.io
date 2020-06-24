@@ -1,19 +1,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Posts on matsch Hub</title>
-        <link>https://mat5ch.github.io/posts/</link>
+        <link>https://matsch.dev/posts/</link>
         <description>Recent content in Posts on matsch Hub</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <lastBuildDate>Thu, 18 Jun 2020 22:14:05 +0200</lastBuildDate>
-        <atom:link href="https://mat5ch.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://matsch.dev/posts/index.xml" rel="self" type="application/rss+xml" />
         
         <item>
             <title>Welcome</title>
-            <link>https://mat5ch.github.io/posts/welcome/</link>
+            <link>https://matsch.dev/posts/welcome/</link>
             <pubDate>Thu, 18 Jun 2020 22:14:05 +0200</pubDate>
             
-            <guid>https://mat5ch.github.io/posts/welcome/</guid>
+            <guid>https://matsch.dev/posts/welcome/</guid>
             <description>Welcome. I&amp;rsquo;m glad you found this place. On this blog, I want to share my thoughts on technology, music and a few other topics. I try to post in a regular manner. Come back any time to see the updates.</description>
             <content type="html"><![CDATA[<p>Welcome. I&rsquo;m glad you found this place. On this blog, I want to share my thoughts on technology, music and a few other topics. I try to post in a regular manner. Come back any time to see the updates.</p>
 ]]></content>
