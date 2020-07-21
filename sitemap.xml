@@ -3,6 +3,31 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://matsch.dev/tags/announcement/</loc>
+    <lastmod>2020-07-21T15:24:24+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://matsch.dev/posts/concerning-projects/</loc>
+    <lastmod>2020-07-21T15:24:24+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://matsch.dev/</loc>
+    <lastmod>2020-07-21T15:24:24+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://matsch.dev/posts/</loc>
+    <lastmod>2020-07-21T15:24:24+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://matsch.dev/tags/</loc>
+    <lastmod>2020-07-21T15:24:24+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://matsch.dev/projects/</loc>
     <lastmod>2020-06-18T23:31:31+02:00</lastmod>
   </url>
@@ -10,26 +35,6 @@
   <url>
     <loc>https://matsch.dev/about/</loc>
     <lastmod>2020-06-18T22:46:25+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://matsch.dev/tags/announcement/</loc>
-    <lastmod>2020-06-18T22:14:05+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://matsch.dev/</loc>
-    <lastmod>2020-06-18T22:14:05+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://matsch.dev/posts/</loc>
-    <lastmod>2020-06-18T22:14:05+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://matsch.dev/tags/</loc>
-    <lastmod>2020-06-18T22:14:05+02:00</lastmod>
   </url>
   
   <url>
