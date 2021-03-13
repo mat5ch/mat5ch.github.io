@@ -114,6 +114,10 @@ blockquote footer {
     margin-top: 30px;
 }
 
+#updated-tag {
+    font-size: 12px;	
+}
+
 #prev-next {
     padding: 15px 0;
 }
@@ -191,6 +195,7 @@ pre, code, .hljs {
     }
     #sidebar{
         padding: 15px;
+	margin-top: 15px;
     }
     #post-meta .right {
         float:left;
