@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>matsch.dev: Command line scripting with Babashka</title>
+    
+<meta name="keywords" content="clojure,babashka">
+
+<meta name="description" content="Not too long ago I stumbled upon a library that allows for writing command line scripts via Clojure. The library is called Babashka. It runs on the Small Clojure Interpreter and is compiled to native code via GraalVM. There is a self-contained binary thus no JVM installation is required. Runtime performance is not a goal within the project, the startup time is pretty fast though.I used Babashka to create a small script that goes to a sports website and grabs some data from the rendered html (using the slurp function). To get the desired elements inside the html, I prepared a litte regex. After a few steps of processing I achieved the final output. Below you can find the code of the script and a screenshot of the output in the terminal.">
+
+<meta property="og:description" content="Not too long ago I stumbled upon a library that allows for writing command line scripts via Clojure. The library is called Babashka. It runs on the Small Clojure Interpreter and is compiled to native code via GraalVM. There is a self-contained binary thus no JVM installation is required. Runtime performance is not a goal within the project, the startup time is pretty fast though.I used Babashka to create a small script that goes to a sports website and grabs some data from the rendered html (using the slurp function). To get the desired elements inside the html, I prepared a litte regex. After a few steps of processing I achieved the final output. Below you can find the code of the script and a screenshot of the output in the terminal.">
+
+<meta property="og:url" content="https://matsch.dev/posts/2021-03-18-babashka-scripting/" />
+<meta property="og:title" content="Command line scripting with Babashka" />
+<meta property="og:type" content="article" />
+
+    <link rel="canonical" href="https://matsch.dev/posts/2021-03-18-babashka-scripting/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Frijole&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/default.min.css">
+    <link href="/css/screen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">matsch.dev</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li
+                ><a href="/archives/">Blog</a></li>
+                
+                <li
+                >
+                <a href="/projects/">Projects</a>
+                </li>
+                
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div><!--/.container-fluid -->
+</nav>
+
+
+<div class="container">
+
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div id="content">
+                
+<div id="post">
+    <div class="post-header">
+    <div id="post-meta" class="row">
+        <div class="col-lg-6">18 March 2021</div>
+        
+    </div>
+    <h2>Command line scripting with Babashka</h2>
+</div>
+<div>
+    
+    <p>Not too long ago I stumbled upon a library that allows for writing command line scripts via Clojure. The library is called <a href="https://github.com/babashka/babashka">Babashka</a>. It runs on the Small Clojure Interpreter and is compiled to native code via GraalVM. There is a self-contained binary thus no JVM installation is required. Runtime performance is not a goal within the project, the startup time is pretty fast though.</p><p>I used Babashka to create a small script that goes to a sports website and grabs some data from the rendered html (using the slurp function). To get the desired elements inside the html, I prepared a litte regex. After a few steps of processing I achieved the final output. Below you can find the code of the script and a screenshot of the output in the terminal.</p><p>Note that there are specific libraries such as <a href="https://github.com/cgrand/enlive">Enlive</a> that focus on facilitating web scraping via Clojure. For this simple example, I chose to use the standard library.</p><h3 id="code">Code:</h3><pre><code>#!/usr/bin/env bb
+
+(def slurped-html (slurp "https://www.bundesliga.com/en/bundesliga/table"))
+;; (def slurped-html (slurp "buli_table.txt"))
+(def resequed (re-seq #"\"rank\"&gt;(\d+)&lt;/td&gt;|\"d-none d-lg-inline\"&gt;([\s|\-|\.|\w|ä|ö|ü]+)&lt;/span&gt;|\"pts\"&gt;(\d+)&lt;/td&gt;|\"difference\"&gt;([\+|\-]\d+)&lt;/td&gt;" slurped-html))
+
+;; drop first two vals from seq (two false vals from regex [see "d-none..." class]) and convert to vector
+(def resequed-cleaned (vec (drop 2 resequed)))
+
+(def modulo-list (take (count resequed-cleaned) (cycle (range 1 5))))
+(def table-list (partition 4 (map (fn [row, n] (get row n)) resequed-cleaned modulo-list)))
+
+(defn insertSpaces [string max-no]
+ (let [countOfString (count string)
+       noOfSpaces (- max-no countOfString)]
+   (apply str (repeat noOfSpaces " "))))
+
+(doseq [line table-list]
+  (let [max-length 30]
+    (println (str (nth line 0) "\t" (nth line 1) (insertSpaces (nth line 1) max-length) (nth line 2) "\t" (nth line 3)))))
+</code></pre><h3 id="output">Output:</h3><p><img src="/img/babashka-web-scraping.png" alt="Script Output" /></p>
+</div>
+
+<div id="post-tags">
+    <b>Tags: </b>
+    
+    <a href="/tags/clojure/">clojure</a>
+    
+    <a href="/tags/babashka/">babashka</a>
+    
+</div>
+
+
+    <div id="prev-next">
+        
+        
+        <a class="right" href="/posts/2021-03-10-learning-clojure/">Learning Clojure &raquo;</a>
+        
+    </div>
+
+    
+
+
+</div>
+
+            </div>
+        </div>
+    </div>
+        <footer>
+      <p id="bio-links"> <a href="https://github.com/mat5ch/" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a><a href="https://codepen.io/mat5ch/" target="_blank"><i class="fa fa-codepen" aria-hidden="true"></i></a> | <a href="/feed.xml" target="_blank"><i class="fa fa-rss" aria-hidden="true"></i></a></p>
+      <p style="text-align: center;">Copyright &copy; 2021 Matthias Schott <br>
+      Powered by <a href="http://cryogenweb.org">Cryogen</a></p>
+    </footer>
+</div>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="/js/highlight.pack.js" type="application/javascript"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+</body>
+</html>
